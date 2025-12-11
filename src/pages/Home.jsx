@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import ProductCard from "../components/ProductCard.jsx";
 
-export const Home = () => {
-  const heroImageUrl = `https://plus.unsplash.com/premium_photo-1683141237355-d966b653f414?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`
-  const {store, dispatch} =useGlobalReducer()
 
-	const apiUrl = `https://products.carmonasamuel.lat/products/`;
+export const Home = () => {
+	const heroImageUrl = `https://plus.unsplash.com/premium_photo-1683141237355-d966b653f414?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`
+	const {store, dispatch} =useGlobalReducer()
+	const apiUrl = import.meta.env.VITE_API_URL+`products/`;
 
 	const fetchProducts = async () => {
 		try {

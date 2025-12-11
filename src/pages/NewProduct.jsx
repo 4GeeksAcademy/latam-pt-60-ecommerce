@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
-
+    
+    const navigate = useNavigate()
     const labelClasses = "mb-2 font-bold text-gray-700";
     const inputClasses = "mb-4 p-2 border border-gray-300 rounded";
 
@@ -25,16 +27,31 @@ const NewProduct = () => {
             placeholder: "5"
         },
     ];
-
+    
     const [ newProduct, setNewProduct ] = useState({
         name: "",
         price: 0,
         stock: 0,
     });
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault(); // evita que la pestaña se recargue
         console.log("New Product Submitted:", newProduct);
+
+        const apiUrl = import.meta.env.VITE_API_URL + `products/`;
+        
+        const resp = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newProduct)
+        })
+        const data = await resp.json()
+        console.log(data) // store maybe?
+        if (resp.ok) {
+            navigate("/") // Home
+        }
     }
 
     const handleInput = (event) => {

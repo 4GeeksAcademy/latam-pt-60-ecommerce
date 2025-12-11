@@ -32,6 +32,26 @@ export default function storeReducer(store, action = {}) {
         products: action.payload
       };
 
+    case 'remove_from_cart':
+
+      return {
+        ...store,
+        shoppingCart: store.shoppingCart.filter(item => item.id != action.payload.id)
+      }
+
+    case 'add_to_shopping_cart':
+
+      const isAlreadyInTheCart = store.shoppingCart.find(item => item.id == action.payload.id);
+
+      if (isAlreadyInTheCart) return {
+        ...store
+      }
+
+      return {
+        ...store,
+        shoppingCart: [...store.shoppingCart, action.payload]
+      };
+
     case 'add_task':
       const { id,  color } = action.payload
 
