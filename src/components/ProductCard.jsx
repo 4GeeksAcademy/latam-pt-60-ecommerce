@@ -3,13 +3,15 @@ import useGlobalReducer from '../hooks/useGlobalReducer';
 
 const ProductCard = ({ product }) => {
 
+	const imagePlaceholder = `https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=2048x2048&w=is&k=20&c=dFWJz1EFJt7Tq2lA-hgTpSW119YywTWtS4EwU3fpKrE=`
+
 	const { store, dispatch } = useGlobalReducer();
 
 	const isSelected = store.shoppingCart.find(item => item.id == product.id)
 
 	return (
 		<div className="border rounded-lg p-4 shadow-md text-black flex flex-col items-center">
-			{/* <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4" /> */}
+			<img src={imagePlaceholder} alt={product.name} className="w-full h-48 object-cover mb-4" />
 			<h2 className="text-xl font-semibold mb-2">{product.name}</h2>
 			<p className="text-gray-700 mb-4">${product.price}</p>
 			<button

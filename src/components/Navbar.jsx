@@ -25,7 +25,7 @@ export const Navbar = () => {
 
 					<button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="relative bg-white text-sm text-amber-800 px-4 py-2 rounded">
 						Cart [{ store.shoppingCart.length }]
-						{isDropdownOpen && <div className="absolute bg-white shadow-lg rounded-md border-1 border-amber-800 z-500 text-amber-800  min-w-[200px]">
+						{isDropdownOpen && store.shoppingCart.length != 0  && <div className="absolute bg-white shadow-lg rounded-md border-1 border-amber-800 z-500 text-amber-800  min-w-[200px]">
 							{
 								store.shoppingCart && store.shoppingCart.map((item, key) => <p className={
 									`w-auto p-2 hover:bg-amber-700/30 ${key == 0 && "rounded-t-md"} ${ key == (store.shoppingCart.length - 1) && "rounded-b-md"}`}
